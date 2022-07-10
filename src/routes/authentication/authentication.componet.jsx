@@ -8,7 +8,7 @@ import {
 } from '../../utils/firebase/firebase.utils';
 import SignUpForm from '../../componets/sign-up-form/sign-up-form.componet';
 import SignInForm from '../../componets/sign-in-form/sign-in-form.componet';
-import './authentication.styles.scss';
+import { AuthenticationContainer } from './authentication.styles';
 
 const Authentication = () => {
   //   useEffect(() => {
@@ -31,13 +31,13 @@ const Authentication = () => {
   //   };
 
   return (
-    <div className='authentication-container'>
+    <AuthenticationContainer>
       <SignInForm></SignInForm>
       <SignUpForm></SignUpForm>
       {/* <button onClick={signInWithGoogleRedirect}>
         Sign in with Google Redirect
       </button> */}
-    </div>
+    </AuthenticationContainer>
   );
 };
 

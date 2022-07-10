@@ -6,7 +6,7 @@ import {
 import Button from '../button/button.component';
 
 import FormInput from '../form-input/form-input.component';
-import './sing-up-form.styles.scss';
+import { SignUpContainer } from './sign-up-form.styles';
 import { UserContext } from '../../contexts/user.context';
 
 const defaultFormFields = {
@@ -20,7 +20,7 @@ const SignUpForm = () => {
   const [formFields, SetFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   // const { setCurrentUser } = useContext(UserContext);
-  console.log('hit');
+
   const resetFormFields = () => {
     SetFormFields(defaultFormFields);
   };
@@ -48,9 +48,9 @@ const SignUpForm = () => {
     SetFormFields({ ...formFields, [name]: value });
   };
   return (
-    <div className='sign-up-container'>
-      <h2>Don't have any account?</h2>
-      <span>Sing up with your email and password</span>
+    <SignUpContainer>
+      <h2>Don't have an account?</h2>
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label='Display Name'
@@ -60,6 +60,7 @@ const SignUpForm = () => {
           name='displayName'
           value={displayName}
         />
+
         <FormInput
           label='Email'
           type='email'
@@ -68,6 +69,7 @@ const SignUpForm = () => {
           name='email'
           value={email}
         />
+
         <FormInput
           label='Password'
           type='password'
@@ -76,6 +78,7 @@ const SignUpForm = () => {
           name='password'
           value={password}
         />
+
         <FormInput
           label='Confirm Password'
           type='password'
@@ -86,7 +89,7 @@ const SignUpForm = () => {
         />
         <Button type='submit'>Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

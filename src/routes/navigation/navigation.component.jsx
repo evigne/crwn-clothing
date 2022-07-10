@@ -1,7 +1,12 @@
 import { Fragment, useContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { ReactComponent as Crwnlogo } from '../../assets/crown.svg';
-import './navigation.style.scss';
+import {
+  NavigationContainer,
+  LogoContainer,
+  NavLinks,
+  NavLink,
+} from './navigation.style.jsx';
 import CartIcon from '../../componets/cart-icon/cart-icon.component';
 import CartDropdown from '../../componets/cart-dropdown/cart-dropdown.component';
 import { UserContext } from '../../contexts/user.context';
@@ -18,34 +23,67 @@ const Navigation = () => {
   // console.log('The Current User is,', currentUser);
   return (
     <Fragment>
-      <div className='navigation'>
-        <Link className='logo-container' to='/'>
+      <NavigationContainer>
+        <LogoContainer to='/'>
           <Crwnlogo className='logo' />
-        </Link>
-        <div className='nav-links-container'>
-          <Link className='nav-link' to='/shop'>
-            SHOP
-          </Link>
+        </LogoContainer>
+        <NavLinks>
+          <NavLink to='/shop'>SHOP</NavLink>
           {/* <Link className='nav-link' to='/contact'>
             CONTACT
           </Link> */}
           {currentUser ? (
-            <span className='nav-link' onClick={signOutUser}>
+            <NavLink as='span' onClick={signOutUser}>
               SIGN OUT
-            </span>
+            </NavLink>
           ) : (
-            <Link className='nav-link' to='/auth'>
-              SIGN IN
-            </Link>
+            <NavLink to='/auth'>SIGN IN</NavLink>
           )}
           <CartIcon />
-        </div>
+        </NavLinks>
         {/* && meaning shot circuit operator */}
         {isCartOpen && <CartDropdown />}
-      </div>
+      </NavigationContainer>
+      {/* OLD Code 1 */}
       <Outlet />
     </Fragment>
   );
 };
 
 export default Navigation;
+
+//// OLD CODE 1
+
+//  <div className='navigation'>
+//         <Link className='logo-container' to='/'>
+//           <Crwnlogo className='logo' />
+//         </Link>
+//         <div className='nav-links-container'>
+//           <Link className='nav-link' to='/shop'>
+//             SHOP
+//           </Link>
+//
+// {
+//   /* <Link className='nav-link' to='/contact'>
+//             CONTACT
+//           </Link> */
+// }
+//
+//   {currentUser ? (
+//             <span className='nav-link' onClick={signOutUser}>
+//               SIGN OUT
+//             </span>
+//           ) : (
+//             <Link className='nav-link' to='/auth'>
+//               SIGN IN
+//             </Link>
+//           )}
+//           <CartIcon />
+//         </div>
+//
+// {
+//   /* && meaning shot circuit operator */
+// }
+//
+//   {isCartOpen && <CartDropdown />}
+//       </div>
